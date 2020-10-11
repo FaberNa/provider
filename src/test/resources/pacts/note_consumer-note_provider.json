@@ -1,0 +1,98 @@
+{
+  "provider": {
+    "name": "note_provider"
+  },
+  "consumer": {
+    "name": "note_consumer"
+  },
+  "interactions": [
+    {
+      "description": "A request to nota with id",
+      "request": {
+        "method": "GET",
+        "path": "/nota/1",
+        "matchingRules": {
+          "path": {
+            "matchers": [
+              {
+                "match": "regex",
+                "regex": "/nota/1"
+              }
+            ],
+            "combine": "AND"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "author": "John Doe",
+          "id": "1",
+          "content": "A simple note",
+          "createAt": "2000-01-31"
+        },
+        "matchingRules": {
+          "body": {
+            "$.id": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.content": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.createAt": {
+              "matchers": [
+                {
+                  "match": "date",
+                  "date": "yyyy-MM-dd"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.author": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        },
+        "generators": {
+          "body": {
+            "$.createAt": {
+              "type": "Date",
+              "format": "yyyy-MM-dd"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "GET nota 200"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.0.9"
+    }
+  }
+}

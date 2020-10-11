@@ -1,0 +1,22 @@
+{
+  "note": [
+    {
+      "id": 1,
+      "author": "John Doe",
+      "createAt": "2019-12-12",
+      "content": "A simple note"
+    },
+    {
+      "id": 2,
+      "author": "Ubaldo Daniels",
+      "createAt": "2020-01-01",
+      "content": "Remember to use Scala"
+    },
+    {
+      "id": 3,
+      "author": "Ashay Tiruvanmalai",
+      "createAt": "2020-02-12",
+      "content": "Forget annotation"
+    }
+  ]
+}
